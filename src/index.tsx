@@ -42,19 +42,21 @@ const App = () => {
     setCode(result.outputFiles[0].text);
   };
 
+  const html = `
+    <script>
+      ${code}
+    </script>
+  `;
+
   return <div>
     <textarea value={input} onChange={e => setInput(e.target.value)}></textarea>
     <div>
       <button onClick={onClick}>Submit</button>
     </div>
     <pre>{code}</pre>
-    <iframe sandbox="" title="iframe" srcDoc={html} />
+    <iframe sandbox="allow-scripts" title="iframe" srcDoc={html} />
   </div>;
 };
-
-const html = `
-  <h1>Local HTML</h1>
-`;
 
 ReactDOM.render(
   <App />,
